@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class TLightModeColors {
   TLightModeColors._();
 
-  static Color primaryColor = const Color.fromARGB(255, 14, 95, 245);
+  static Color primaryColor = Color(0xFF60A898);
+  static Color secondaryColor = const Color(0xCDFEB5B8);
+  static Color thirdColor = const Color(0xCDe0c3f6);
   static Color scaffoldBgColor = Colors.white;
   static Color appBarBgColor = Colors.white;
   static Color appBarFgColor = Colors.black;
@@ -15,7 +17,9 @@ class TLightModeColors {
 
 class TDarkModeColors {
   TDarkModeColors._();
-  static Color primaryColor = const Color.fromARGB(255, 14, 95, 245);
+  static Color primaryColor = Color(0xFF60A898);
+  static Color secondaryColor = const Color(0xCDFEB5B8);
+  static Color thirdColor = const Color(0xCDe0c3f6);
   static Color scaffoldBgColor = Color(0XFF121212);
   static Color appBarBgColor = Colors.grey.shade700;
   static Color appBarFgColor = Colors.white;

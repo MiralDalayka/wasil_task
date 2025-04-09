@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wasil_flutter_task/core/common/services/router/app_router.dart';
+import 'package:wasil_flutter_task/features/auth/presentation/blocs/auth_cubit.dart';
 
 import '../../../../../../app/get_it/get_it.dart';
 import '../../../../../../features/auth/presentation/screens/registration_screen.dart';
-import '../../../../../../features/home/presentation/widgets/products_view_home_screen_widgets/products_view.dart';
+import '../../../../../../features/home/presentation/screens/advancedViewMode.dart';
 import '../../../../../theme/theme_cubit/theme_cubit.dart';
 import '../../../../services/dialog/dialog_service.dart';
 import '../../../dialogs/select_theme_dialog.dart';
@@ -29,6 +30,13 @@ class DrawerBody extends StatelessWidget {
           title: 'About',
           onTap: () {
             AppRouter.push(screen: AdvancedViewMode());
+          },
+        ),
+        DrawerItem(
+          icon: Icons.logout,
+          title: 'LogOut',
+          onTap: () {
+            serviceLocator<AuthCubit>().logout();
           },
         ),
         Align(

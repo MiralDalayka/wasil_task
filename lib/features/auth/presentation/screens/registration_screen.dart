@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_holo_date_picker/date_picker.dart';
 import 'package:gap/gap.dart';
 import 'package:wasil_flutter_task/app/layout/layout.dart' show Layout;
+import 'package:wasil_flutter_task/features/auth/presentation/blocs/auth_cubit.dart';
 import 'package:wasil_flutter_task/features/auth/presentation/screens/login_screen.dart';
+import 'package:wasil_flutter_task/features/auth/presentation/widgets/signin_with_google.dart';
 
 import '../../../../app/get_it/get_it.dart';
 import '../../../../core/common/services/dialog/dialog_service.dart';
@@ -27,9 +29,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   //? Controllers
   final fNameController = TextEditingController();
-  final sNameController = TextEditingController();
+  final passwordController = TextEditingController();
   final dobController = TextEditingController();
-  final phoneController = TextEditingController();
   final emailController = TextEditingController();
   //? Controllers
 
@@ -95,19 +96,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     hintText: "min 2 chars",
                     keyboardType: TextInputType.name,
                   ),
-                  Gap(20),
-                  TFormField(
-                    controller: sNameController,
-                    validator:
-                        (value) =>
-                            ValidatorUtils.validateRequiredFieldWithLength(
-                              length: 2,
-                              value: "$value",
-                            ),
-                    label: "Second name",
-                    hintText: "min 2 chars",
-                    keyboardType: TextInputType.name,
-                  ),
+
                   Gap(20),
                   GestureDetector(
                     onTap: () async {
@@ -147,17 +136,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       ),
                     ),
                   ),
-                  Gap(20),
-                  TFormField(
-                    controller: phoneController,
-                    validator:
-                        (value) => ValidatorUtils.validatePhoneNumber(
-                          phoneNumber: "$value",
-                        ),
-                    label: "Phone",
-                    hintText: "+12345678912",
-                    keyboardType: TextInputType.phone,
-                  ),
+
                   Gap(20),
                   TFormField(
                     controller: emailController,
@@ -168,27 +147,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     hintText: "name@company.com",
                     keyboardType: TextInputType.emailAddress,
                   ),
+                  Gap(20),
+                  TFormField(
+                    isPass: true,
+                    controller: passwordController,
+                    validator:
+                        (value) =>
+                            ValidatorUtils.validateRequiredFieldWithLength(
+                              length: 2,
+                              value: "$value",
+                            ),
+                    label: "Password",
+                    hintText: "min 8 chars",
+
+                    keyboardType: TextInputType.name,
+                  ),
                 ],
               ),
             ),
             Gap(5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'or sign up with',
-                  style: TextTheme.of(context).labelLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onSecondaryContainer,
-                  ),
-                ),
-                Gap(8),
-                Image.network(
-                  'https://tse4.mm.bing.net/th/id/OIP.lsGmVmOX789951j9Km8RagHaHa?rs=1&pid=ImgDetMain',
-                  height: 24,
-                  width: 24,
-                ),
-              ],
-            ),
+            SignInWithGoogle(),
             Gap(5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -337,11 +315,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         );
                         await Future.delayed(Duration(seconds: 2));
                         _dialogService.hideDialog(context);
-                        AppRouter.push(screen: Layout());
+
+                        await serviceLocator<AuthCubit>().signUpWithEmail(
+                          emailController.text,
+                          passwordController.text,
+                        );
                       }
                     }
                   }
                   : null,
+
           child: Text(
             "Register".toUpperCase(),
             style: TextTheme.of(context).labelLarge?.copyWith(

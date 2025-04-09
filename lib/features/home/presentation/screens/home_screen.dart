@@ -6,8 +6,9 @@ import 'package:gap/gap.dart';
 import '../../../../app/get_it/get_it.dart';
 import '../../../../core/common/widgets/sections/drawer/drawer.dart';
 import '../../../../core/common/widgets/sections/loading_body.dart';
-import '../blocs/products_cubit.dart';
-import '../widgets/products_view_home_screen_widgets/products_view.dart';
+import '../../../cart/presentation/screens/widgets/cart_icon_widget.dart';
+import '../../../product/presentation/blocs/products_cubit.dart';
+import 'advancedViewMode.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
@@ -37,17 +38,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
               "Wasil",
               style: TextTheme.of(
                 context,
-              ).titleSmall?.copyWith(fontWeight: FontWeight.w500),
+              ).titleLarge?.copyWith(fontWeight: FontWeight.w500),
             ),
-            actions: [
-              GestureDetector(
-                onTap: () {
-                  //TODO navigate to cart
-                },
-                child: Icon(Icons.shopping_bag, size: 30),
-              ),
-              Gap(22),
-            ],
+            actions: [CartIconWidget()],
           ),
           body: Conditional.single(
             context: context,
@@ -73,9 +66,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               if (state is ProductsLoading) {
                 return LoadingBody();
               }
-              return cubit.isAdvancedViewMode
-                  ? AdvancedViewMode()
-                  : Container();
+              return AdvancedViewMode();
               // : SimpleViewMode();
             },
           ), // body: NoTradingAccountBody(),

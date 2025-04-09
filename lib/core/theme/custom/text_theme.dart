@@ -8,68 +8,68 @@ class TTextTheme {
     headlineSmall: TextStyle().copyWith(
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     headlineMedium: TextStyle().copyWith(
       fontSize: 28,
       fontWeight: FontWeight.bold,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     headlineLarge: TextStyle().copyWith(
       fontSize: 40,
       fontWeight: FontWeight.bold,
-      color: Colors.black,
+      color: Colors.grey,
     ),
 
     // NORMAL TITLES
     titleSmall: TextStyle().copyWith(
       fontSize: 16,
       fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     titleMedium: TextStyle().copyWith(
       fontSize: 18,
       fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     titleLarge: TextStyle().copyWith(
       fontSize: 22,
       fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: Colors.grey,
     ),
 
     // BODY TEXTS
     bodySmall: TextStyle().copyWith(
       fontSize: 14,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     bodyMedium: TextStyle().copyWith(
       fontSize: 16,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     bodyLarge: TextStyle().copyWith(
       fontSize: 18,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
 
     // LABELS AND SMALL TEXT
     labelSmall: TextStyle().copyWith(
       fontSize: 10,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     labelMedium: TextStyle().copyWith(
       fontSize: 12,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     labelLarge: TextStyle().copyWith(
       fontSize: 14,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
   );
 
