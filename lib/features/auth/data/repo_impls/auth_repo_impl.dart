@@ -1,34 +1,35 @@
+import 'package:fpdart/src/either.dart';
+import 'package:wasil_flutter_task/app/get_it/get_it.dart';
+
+import 'package:wasil_flutter_task/core/errors/failures.dart';
+import 'package:wasil_flutter_task/features/auth/data/data_sources/auth_data_source.dart';
+
+import 'package:wasil_flutter_task/features/auth/data/models/signup_request_body.dart';
+
 import '../../domain/repository/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
   const AuthRepoImpl();
 
-  //?  @override
-  //?  Future<Either<Failure, API_RESPONSE_ENTITY>> login({
-  //?    required String email,
-  //?    required String password,
-  //?    //? ...
-  //?  }) async {
-  //?    return functionToRun(
-  //?      () async => await remoteDataSource.login(
-  //?        email: email,
-  //?        password: password,
-  //?      ),
-  //?    );
-  //?  }
+  @override
+  Future<Either<Failure, bool>> login(AuthRequestBody request) async {
+    try {
+      final flag = await serviceLocator<AuthDataSource>()
+          .loginWithEmailAndPassword(request: request);
+      return right(flag);
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
 
-  //?   Future<Either<Failure, API_RESPONSE_ENTITY>> functionToRun(
-  //?    Future<API_RESPONSE_ENTITY> Function() fn,
-  //?  ) async {
-  //?    try {
-  //?      if (!await (connectionChecker.isConnected)) {
-  //?        return left(Failure("Message"));
-  //?      }
-  //?      final entityToReturn = await fn();
-  //?
-  //?      return right(entityToReturn);
-  //?    } on ServerException catch (e) {
-  //?      return left(Failure(e.message));
-  //?    }
-  //?  }
+  @override
+  Future<Either<Failure, bool>> signup(AuthRequestBody request) async {
+    try {
+      final flag = await serviceLocator<AuthDataSource>()
+          .signUpWithEmailAndPassword(request: request);
+      return right(flag);
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
 }

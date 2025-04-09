@@ -6,6 +6,10 @@ widget that has button to click on
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:wasil_flutter_task/app/get_it/get_it.dart';
+import 'package:wasil_flutter_task/core/common/widgets/sections/soon_page.dart';
+
+import '../../../../auth/presentation/blocs/auth_cubit.dart';
 
 class SaleAdsSlider extends StatefulWidget {
   const SaleAdsSlider({super.key});
@@ -49,21 +53,23 @@ class _SaleAdsSliderState extends State<SaleAdsSlider> {
   Widget build(BuildContext context) {
     //todo should be replaced
 
-    final List<String> imgList = [
-      'https://imageplaceholder.net/600x400/eeeeee/131313?text=Sales1',
-      'https://imageplaceholder.net/600x400/eeeeee/131313?text=Sales2',
-      'https://imageplaceholder.net/600x400/eeeeee/131313?text=Sales3',
-    ];
+    final List<String> salesImages = [
+      'https://th.bing.com/th/id/R.b68aefd87053f57b18a06ff06a013ab6?rik=DInQsRngtu8yuQ&pid=ImgRaw&r=0',
+      'https://th.bing.com/th/id/OIP.0wOwtx3MH4Aalsb3FTXpugHaD4?rs=1&pid=ImgDetMain',
 
+      'https://media.istockphoto.com/id/1163637877/vector/perfume-ads-with-paper-flowers.jpg?s=612x612&w=0&k=20&c=EWgGPkvjNePF5JvRSywRKmGIUYgPBloV3AqNyZXrHdk=',
+    ];
     return SizedBox(
-      height: 150,
+      height: 200,
       child: PageView.builder(
         controller: _pageController,
-        itemCount: imgList.length,
+        itemCount: salesImages.length,
         itemBuilder: (context, index) {
-          final imgUrl = imgList[index];
-          //todo: replace it with card that has button
-          return Image.network(imgUrl, fit: BoxFit.cover);
+          final imgUrl = salesImages[index];
+          return GestureDetector(
+            onTap: () => serviceLocator<AuthCubit>().authMode(SoonPage()),
+            child: Image.network(imgUrl, fit: BoxFit.cover),
+          );
         },
         pageSnapping: true,
       ),

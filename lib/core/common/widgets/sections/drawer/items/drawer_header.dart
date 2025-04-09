@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:wasil_flutter_task/app/get_it/get_it.dart';
+import 'package:wasil_flutter_task/features/auth/presentation/blocs/auth_cubit.dart';
 
 import '../../../misc/divider.dart';
 
@@ -30,7 +32,9 @@ class CustomeDrawerHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Miral', //TODO CHANGE IT to username
+                    serviceLocator<AuthCubit>().isSignedIn
+                        ? "Miral"
+                        : "GUEST", //TODO CHANGE IT to username
                     style: Theme.of(
                       context,
                     ).textTheme.headlineSmall?.copyWith(fontSize: 12),

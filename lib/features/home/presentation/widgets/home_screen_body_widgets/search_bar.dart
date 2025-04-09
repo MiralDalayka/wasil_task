@@ -9,31 +9,31 @@ class HomeSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Expanded(
-          child: SearchBar(
-            shadowColor: WidgetStatePropertyAll(Colors.transparent),
-            side: WidgetStatePropertyAll(BorderSide(color: Colors.grey)),
-            leading: Icon(Icons.search),
-            backgroundColor: WidgetStatePropertyAll(Colors.white),
-            hintText: "Search",
-            hintStyle: WidgetStatePropertyAll(TextStyle(fontSize: 15)),
-          ),
+    return Container(
+      margin: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+        border: Border(
+          bottom: BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
         ),
-        const Gap(10),
-        Container(
-          width: 40,
-          height: 40,
-          decoration: const BoxDecoration(shape: BoxShape.circle),
-          child: IconButton(
-            icon: const Icon(Icons.filter_list), //todo change the icon
-            onPressed: () {
-              // Handle filter icon press
-            },
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.search, color: Theme.of(context).primaryColor),
+          const SizedBox(width: 10.0),
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                border: InputBorder.none,
+                hintStyle: TextStyle(color: Theme.of(context).primaryColor),
+              ),
+              style: TextStyle(color: Theme.of(context).primaryColor),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

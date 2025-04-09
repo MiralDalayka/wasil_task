@@ -15,6 +15,7 @@ class Constants {
   static const tabletBreakpoint = 600;
 
   static const productsListKey = "productsList";
+  static const cartListKey = "cartList";
 }
 
 enum ThemeEnums { light, dark, system }
