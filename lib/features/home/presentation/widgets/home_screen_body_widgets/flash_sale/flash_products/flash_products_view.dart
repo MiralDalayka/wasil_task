@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:wasil_flutter_task/app/get_it/get_it.dart';
-import 'package:wasil_flutter_task/features/home/presentation/widgets/advanced_quote_tile.dart';
+import 'package:wasil_flutter_task/features/home/presentation/widgets/products_view_home_screen_widgets/advanced_product_tile.dart';
 import '../../../../blocs/products_cubit.dart';
 import 'product_card.dart';
 

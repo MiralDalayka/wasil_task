@@ -3,7 +3,7 @@ import 'package:wasil_flutter_task/core/common/services/router/app_router.dart';
 
 import '../../../../../../app/get_it/get_it.dart';
 import '../../../../../../features/auth/presentation/screens/registration_screen.dart';
-import '../../../../../../features/home/presentation/screens/test_home.dart';
+import '../../../../../../features/home/presentation/widgets/products_view_home_screen_widgets/products_view.dart';
 import '../../../../../theme/theme_cubit/theme_cubit.dart';
 import '../../../../services/dialog/dialog_service.dart';
 import '../../../dialogs/select_theme_dialog.dart';
@@ -28,7 +28,7 @@ class DrawerBody extends StatelessWidget {
           icon: Icons.info_outline,
           title: 'About',
           onTap: () {
-            AppRouter.push(screen: HomePage());
+            AppRouter.push(screen: AdvancedViewMode());
           },
         ),
         Align(
