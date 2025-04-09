@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../domain/entities/product_entity.dart';
+import '../../../domain/entities/product_entity.dart';
 
 class AdvancedQuoteTile extends StatefulWidget {
   final ProductEntity product;

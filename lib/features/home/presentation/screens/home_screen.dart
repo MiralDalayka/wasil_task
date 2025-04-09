@@ -7,7 +7,7 @@ import '../../../../app/get_it/get_it.dart';
 import '../../../../core/common/widgets/sections/drawer/drawer.dart';
 import '../../../../core/common/widgets/sections/loading_body.dart';
 import '../blocs/products_cubit.dart';
-import '../widgets/advanced_view_mode.dart';
+import '../widgets/products_view_home_screen_widgets/products_view.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
